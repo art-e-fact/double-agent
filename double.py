@@ -7,48 +7,36 @@ import asyncio
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 messages = [
-        {'role': 'system', 'content': "RequirementsGPT. Your role is to help the user specfify full requirements for the web frontend of a project. The result should be enough to create an HTML template. Please prefix each requirement you will generate by REQ"},
-        {'role': 'assistant', 'content': "Hello! How can I assist you today with your UI project requirements?"}
-    ]
+    {'role': 'system', 'content': "RequirementsGPT. Your role is to help the user specify full requirements for the web frontend of a project. The result should be enough to create an HTML template. Please prefix each requirement you will generate by REQ"},
+    {'role': 'assistant', 'content': "Hello! How can I assist you today with your UI project requirements?"},
+    {'role': 'user', 'content': 'REQ The HTML should include a JavaScript console.'}
+]
+
 
 print(messages[1]["content"])
 
 
 def parse_gpt_output(output):
-    """parse the output of the GPT model to get the sdf file
-    he output is generally as follow
-
-    Here is your file
-    ```html
-    <!DOCTYPE html>
-    ....
-    ...
-    ```
-
-    I added a few boxes and something something
-    """
-    # split the output by the first occurence of ```  or ```xml to get the sdf file
-
-    with open("outputs/last.txt", "w") as f:
-        f.write(output)
+    # ...
     try:
-        split = output.split("```")
+        split = output.split("```javascript")
         code = split[1]
         code = "\n".join(code.split("\n")[1:])
-        explanation = split[2]
-        # return the sdf file
-    except:
+        explanation = split[2].strip()
+    except IndexError:
+        # Return None if the JavaScript code couldn't be extracted
         return None, output
+
     return code, explanation
 
 
 async def generate_output(msg):
     """
-    background tasks for HTML generation
+    background tasks for javascript generation
     """
     prompt = [
             {'role': 'system', 'content': "WebDevGPT. Your role is to generate valid HTML/CSS code wo help the user build an initial web page based on a set of requirements"},
-            {'role': 'user', 'content': f"Please generate an HTML file with embedded CSS  based on the requirements listed below. Requirements start with  the keyword REQ {msg}" }
+            {'role': 'user', 'content': "Please generate an HTML file with embedded CSS  based on the requirements listed below. Requirements start with  the keyword REQ {msg}" }
         ]
     response = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
@@ -66,10 +54,10 @@ async def generate_output(msg):
         f.write(result)
     code, explanation = parse_gpt_output(result)
     if code is not None:
-        with open("outputs/app.html", "w") as f:
+        with open("outputs/app.js", "w") as f:
             f.write(code)
     else:
-        with open("outputs/app.html", "w") as f:
+        with open("outputs/app.js", "w") as f:
             f.write(result)
 
     print("[html updated]")
@@ -125,4 +113,5 @@ async def main():
         #await task
 
 asyncio.run(main())
+
 
