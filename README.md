@@ -15,3 +15,9 @@ For this demo you will have to reload manually when you are notified of an html 
 
 
 Note: there seems to be a bug with some duplicates in the message history, but the concept still works
+
+## running the tests
+
+```
+pytest
+```
