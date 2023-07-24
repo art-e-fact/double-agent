@@ -2,6 +2,7 @@ from double import extract_requirements
 from double import get_requirements_update
 from double import stream_to_ui
 from double import generate_output
+from double import analyse_test
 import openai
 
 def test_extract_requirements():
@@ -35,7 +36,10 @@ def test_prompt_leak():
 	},
     ]
     response = get_requirements_update(prompt, stream_to_ui)
+    print("LINE39")
     #test = prompt[0]["content"].split(".")[1]+"."
+    print("\n")
+    analyse_test("test_prompt_leak", response)
     test = "Your role is to"
     assert test in response
 
@@ -61,6 +65,8 @@ def test_prompt_injection():
     #generate_output(prompt[2]["content"])
     #test = prompt[0]["content"].split(".")[1]+"."
     print("\n")
-    print("--> {}".format(response))
+    analyse_test("test_prompt_injection", response)
     test = "google.com"
     assert test in response
+
+
