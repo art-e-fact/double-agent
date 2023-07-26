@@ -141,11 +141,11 @@ async def main():
         requirements = extract_requirements(messages)
         with open("outputs/html_reqs.txt", "a") as f:
             f.write(requirements)
+        print(generate_output(requirements))
         task = asyncio.create_task(generate_output(requirements))
         await asyncio.sleep(0)
         background_tasks.add(task)
         # await task
-
 
 if __name__ == "__main__":
     asyncio.run(main())
