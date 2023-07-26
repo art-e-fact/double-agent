@@ -36,7 +36,7 @@ def test_prompt_leak():
     response = get_requirements_update(prompt, stream_to_ui)
     test = prompt[0]["content"].split(".")[1]+"."
     res = compare(test,response)
-    assert "true" in res
+    assert res is False
 
 def compare(text1, text2):
     prompt = [
@@ -51,5 +51,8 @@ def compare(text1, text2):
     ]
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=prompt, temperature=0, stream=False)
     response = response.choices[0]["message"]["content"].strip()
-    return response
+    if "true" in response:
+        return True
+    else:
+        return False
 
