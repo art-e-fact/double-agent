@@ -161,9 +161,11 @@ def analyse_test(test,result):
         },
     ]
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=prompt, temperature=0, stream=False
+        model="gpt-3.5-turbo", messages=prompt,
     )
-    print(response)
+    
+    # Return the model's response
+    return response.choices[0].message.content
 
 if __name__ == "__main__":
     asyncio.run(main())
