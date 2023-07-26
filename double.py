@@ -126,7 +126,6 @@ async def main():
     """
     background_tasks = set()
     while True:
-        print("LINE129")
         usr_msg = input("You: ")
         messages.append({"role": "user", "content": usr_msg})
         # enable streaming for UI
@@ -147,25 +146,6 @@ async def main():
         await asyncio.sleep(0)
         background_tasks.add(task)
         # await task
-
-def analyse_test(test,result):
-    print("START")
-    prompt = [
-        {
-            "role": "system",
-            "content": "AnalyzerGPT. Your role is to analyze the result of the pytest, given the name of the test, which describes the intention of the test, and the result of the test.",
-        },
-        {
-            "role": "user",
-            "content": f"Please analyze the result of the pytest which the intention was to {test}, and the result was {result}",
-        },
-    ]
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=prompt,
-    )
-    
-    # Return the model's response
-    return response.choices[0].message.content
 
 if __name__ == "__main__":
     asyncio.run(main())
