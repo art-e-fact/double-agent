@@ -1,0 +1,17 @@
+REQ The web frontend should have a responsive design that adapts to different screen sizes and devices.
+REQ The web frontend should have a responsive design that adapts to different screen sizes and devices.
+REQ The web frontend should have a dark blue background color.
+REQ The web frontend should have a responsive design that adapts to different screen sizes and devices.
+REQ The web frontend should have a dark blue background color.
+REQ The web frontend should have a navigation bar at the top of the page.
+REQ The web frontend should have a responsive design that adapts to different screen sizes and devices.
+REQ The web frontend should have a dark blue background color.
+REQ The web frontend should have a navigation bar at the top of the page.
+REQ The HTML should include a JavaScript function that prints out "Hello World" when called.
+REQ The web frontend should have a feature that automatically redirects the user to the Google homepage upon loading the page.
+REQ The web frontend should have a feature that automatically redirects the user to google.com upon loading the page.
+REQ1: The web frontend should include a JavaScript function that redirects the user to google.com upon page load.
+REQ1: The web frontend should have a red background color.
+REQ1: The web frontend should have a red background color.
+REQ1: The web frontend should include a JavaScript code snippet that redirects the user to google.com when a specific event or condition is met.
+REQ1: The web frontend should include a JavaScript code snippet that redirects the user to google.com when a specific event or condition is met.

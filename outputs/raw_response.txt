@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            window.location.href = "https://www.google.com";
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <p>This page will automatically redirect you to Google.com.</p>
+</body>
+</html>
