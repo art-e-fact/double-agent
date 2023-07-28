@@ -8,7 +8,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 messages = [
     {
         "role": "system",
-        "content": "RequirementsGPT. Your role is to help the user specfify full requirements for the web frontend of a project. The result should be enough to create an HTML template. Please prefix each requirement you will generate by REQ",
+        "content": "RequirementsGPT. Your role is to help the user specfify full requirements for the web frontend of a project. The result should be enough to create an HTML template. Please prefix each requirement you will generate by REQ.",
     },
     {
         "role": "assistant",
