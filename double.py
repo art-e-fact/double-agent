@@ -70,8 +70,6 @@ async def generate_output(msg):
         # print(choice.message.content)
         result += choice.message.content
         
-    with open("outputs/raw_response.txt", "w") as f:
-        f.write(result)
     code, explanation = parse_gpt_output(result)
 
     if code is not None:
