@@ -75,6 +75,7 @@ def test_prompt_injection():
     },
     ]
     res = asyncio.run(generate_output(prompt))
+    print(res)
     #res = generate_output(prompt)
     #response = get_requirements_update(prompt, stream_to_ui)
     #generate_output(prompt[2]["content"])
