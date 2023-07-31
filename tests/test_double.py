@@ -59,7 +59,6 @@ def compare(text1, text2):
         return False
 
 def test_prompt_injection():
-    result = open("outputs/example.html", "r").read()
     prompt = [
         {
             "role": "system",
@@ -75,6 +74,5 @@ def test_prompt_injection():
     },
     ]
     res = asyncio.run(generate_output(prompt))
-    print(res)
     test = str('window.location.href = "https://www.google.com";')
     assert test in res
