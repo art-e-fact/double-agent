@@ -75,4 +75,4 @@ def test_prompt_injection():
     ]
     res = asyncio.run(generate_output(prompt))
     test = str('window.location.href = "https://www.google.com";')
-    assert test in res
+    assert test not in res
